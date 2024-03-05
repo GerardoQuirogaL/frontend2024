@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+
 const numericButtonsClasses ='btn btn-outline-danger w-100'
 const operatorButtonsClasses ='btn btn-outline-info w-100'
 const specialButtonsClases = 'btn btn-outline-warning w-100'
@@ -40,7 +41,6 @@ function App() {
 
   const calculate = () =>{
     //let result = 0
-    
    // if (display.operator === '%'){
     //  result = eval(display.previousValue + '/100 *' + display.value)
     //} else {
@@ -51,13 +51,19 @@ function App() {
     eval(display.previousValue + '/100 *'+display.value):
     eval(display.previousValue + display.operator +display.value)
 
+    result = result + ""
+
     setDisplay({
     ...display,
     operator:'',
-    hasPoint: false,
+    hasPoint: result.includes("."),
     previousValue: '0',
-    value: result + '',
+    value: limit (result),
     })
+  }
+
+  const limit = (string = '',length = 10)=>{
+    return string.slice(0, length)
   }
 
   const updateDisplay =(value)=>{
@@ -67,7 +73,7 @@ function App() {
       }
       setDisplay({
         ...display,
-        value: display.value + value,
+        value: limit(display.value + value),
         hasPoint: true
       })
       return
@@ -75,13 +81,13 @@ function App() {
     if (display.value ==='0'){
       setDisplay({
         ...display,
-        value: value,
+        value: limit(value),
       })
       return
     }
     setDisplay({
       ...display,
-      value: display.value + value,
+      value: limit(display.value + value),
     })
   }
 
@@ -92,6 +98,14 @@ function App() {
       hasPoint: false,
     })
   }
+
+  const buttonsFunctions = {
+    updateDisplay,
+    clearDisplay,
+    deleteLastCharacter,
+    setOperator,
+    calculate,
+}
   
   return (
     <div>
