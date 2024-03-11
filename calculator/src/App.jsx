@@ -6,7 +6,6 @@ const operatorButtonsClasses ='btn btn-outline-info w-100'
 const specialButtonsClases = 'btn btn-outline-warning w-100'
 
 
-
 function App() {
   const [display, setDisplay] = useState({
     value: '0',
