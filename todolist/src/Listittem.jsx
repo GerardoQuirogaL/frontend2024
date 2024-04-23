@@ -4,8 +4,9 @@ const Listittem = ({task}) => {
   return (
     <>
     <div className="row">
-        <div className="col-5">
+        <div className="col-6">
           <ShowItemModal task={task}/>
+          <input type="checkbox"/>
           <button 
           className="btn btn-link"
           data-bs-target={"#ShowItemModal"+task.id}
@@ -13,16 +14,14 @@ const Listittem = ({task}) => {
           >{task.task}</button>
         </div>
 
-        <div className="col-2">
+        <div className="col-3">
           {task.limit}
         </div>
 
         <div className="col-3">
           {task.location}
         </div>
-        <div className="col">
-          <input type="checkbox"/>
-        </div>
+
       </div>
     </>
   )

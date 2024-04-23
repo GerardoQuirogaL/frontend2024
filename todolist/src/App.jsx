@@ -1,4 +1,5 @@
 import List from "./List"
+import TaskModal from "./TaskModal"
 
 const taskList = [
   {
@@ -36,6 +37,16 @@ function App() {
       <List 
       taskList={taskList}
       />
+      <hr />
+      <div className="text-end">
+        <TaskModal/>
+        <button 
+        type="button"
+        className="btn btn-outline-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#taskModal"
+        ><i className="bi bi-plus-lg"></i>App</button>
+      </div>
     </div>
   )
 }
