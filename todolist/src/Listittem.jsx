@@ -1,3 +1,4 @@
+import PropTypes  from "prop-types"
 import ShowItemModal from "./ShowItemModal"
 
 const Listittem = ({task}) => {
@@ -25,6 +26,10 @@ const Listittem = ({task}) => {
       </div>
     </>
   )
+}
+
+Listittem.PropTypes ={
+  task: PropTypes.object.isRequired,
 }
 
 export default Listittem

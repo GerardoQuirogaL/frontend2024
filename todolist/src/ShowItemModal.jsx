@@ -1,3 +1,5 @@
+import PropTypes  from "prop-types"
+
 const ShowItemModal = ({task}) => {
     
   return (
@@ -51,6 +53,10 @@ const ShowItemModal = ({task}) => {
         </div>
     </div>
   )
+}
+
+ShowItemModal.propTypes ={
+    task: PropTypes.object.isRequired
 }
 
 export default ShowItemModal
