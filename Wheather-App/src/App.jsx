@@ -1,5 +1,5 @@
 import WheatherCard from "./components/WeatherCard"
-
+import './assets/css/index.css'
 
 const App = () => {
   
