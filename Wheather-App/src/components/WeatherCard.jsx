@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react"
 import { getCurrentWeather } from "../api/weatherapi"
 
-const WheatherCard = () =>{
+const WheatherCard = ({city}) =>{
     const [weather, setWeather] = useState(null)
   
   useEffect(() => {
     const getweather = async () =>{
-      const weather = await getCurrentWeather()
+      const weather = await getCurrentWeather(city)
 
       setWeather(weather)
     }
 
     getweather()
-  },[] )
+  },[city])
     
     
     return (
