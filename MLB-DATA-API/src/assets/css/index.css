@@ -1,5 +1,35 @@
 body {
-    background-image: linear-gradient(to bottom, #0b8acb, #00a9e1, #00c4d2, #00db9d, #12eb49);
-    height: 100vh;
-  }
-  
+  background-image: linear-gradient(to right top, #0b8ff4, #0017c3, #0b8ff4, #0017c3, #0017c3);
+  height: 100vh;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.team-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+}
+
+.team-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}

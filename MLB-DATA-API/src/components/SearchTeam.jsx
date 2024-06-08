@@ -1,54 +1,29 @@
-import { useForm } from "../Hooks/useForm"
-import { useState } from "react";
-import { getTeamsList } from "../api/mlbapi";
+// SearchTeam.jsx
+import { useState } from 'react';
+import { getTeams } from '../api/mlbapi';
 
-const SearchTeam = () => {
-  const [values, handleInputChange, reset] = useForm({ 
-    teamName: '' 
-  });
+const SearchTeam = ({ setTeams }) => {
+    const [searchTerm, setSearchTerm] = useState('');
 
-  const [searchedTeam, setSearchedTeam] = useState(null);
+    const handleSearch = async () => {
+        const allTeams = await getTeams();
+        const filteredTeams = allTeams.filter(team =>
+            team.name_display_full.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setTeams(filteredTeams);
+    };
 
-  const handleSearchTeam = async () => {
-    try {
-      const teamsData = await getTeamsList();
-      const foundTeam = teamsData?.team_all_season?.queryResults?.row.find(team => team.name_display_full.toLowerCase() === values.teamName.toLowerCase());
-      setSearchedTeam(foundTeam);
-    } catch (error) {
-      console.error('Error searching for team:', error);
-    }
-    reset();
-  };
-
-  return (
-    <div className="input-group">
-      <span className="input-group-text">Team Name</span>
-      <input
-        className="form-control"
-        id="teamName"
-        name="teamName"
-        onChange={handleInputChange}
-        type="text"
-        value={values.teamName}
-      />
-      <button
-        className="btn btn-primary"
-        onClick={handleSearchTeam} 
-        type="button"
-      >
-        Search
-      </button>
-
-      {searchedTeam && (
-        <div>
-          <h2>{searchedTeam.name_display_full}</h2>
-          <p>Phone: {searchedTeam.phone_number}</p>
-          <p>Venue: {searchedTeam.venue_name}</p>
-          {/* Mostrar más detalles según sea necesario */}
+    return (
+        <div className="search-bar">
+            <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search for a team..."
+            />
+            <button onClick={handleSearch}>Search</button>
         </div>
-      )}
-    </div>
-  );
-}
+    );
+};
 
 export default SearchTeam;
