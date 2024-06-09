@@ -1,14 +1,14 @@
 import teamImages from '../api/teamImages';
 
 const TeamCard = ({ team }) => {
-  const imageUrl = teamImages[team.team_id] || "https://via.placeholder.com/150";
+  const imageUrl = teamImages[team.name_display_full] || "https://via.placeholder.com/150";
 
   return (
     <div className="col-3 m-2">
       <div className="card">
         <div className="card-body">
       
-        <img src={imageUrl} alt={team.name} />
+        <img src={imageUrl} alt={team.name_display_full} className="team-logo" />
 
           <h5 className="card-title">{team.name_display_full}</h5>
           <p className="card-text">

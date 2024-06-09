@@ -1,4 +1,3 @@
-// SearchTeam.jsx
 import { useState } from 'react';
 import { getTeams } from '../api/mlbapi';
 
