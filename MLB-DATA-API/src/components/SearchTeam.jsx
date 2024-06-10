@@ -23,7 +23,7 @@ const SearchTeam = ({ setTeams }) => {
             <button 
             type="button"
             onClick={handleSearch}
-            className="btn btn-primary">
+            className="btn btn-secondary">
             Search
                 </button>
         </div>
