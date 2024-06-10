@@ -20,7 +20,12 @@ const SearchTeam = ({ setTeams }) => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search for a team..."
             />
-            <button onClick={handleSearch}>Search</button>
+            <button 
+            type="button"
+            onClick={handleSearch}
+            className="btn btn-primary">
+            Search
+                </button>
         </div>
     );
 };
